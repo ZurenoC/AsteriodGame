@@ -37,7 +37,7 @@ public class Game
         gameData.setDisplayHeight(Gdx.graphics.getHeight());
 
         cam = new OrthographicCamera(gameData.getDisplayWidth(), gameData.getDisplayHeight());
-        cam.translate(gameData.getDisplayWidth() / 2, gameData.getDisplayHeight() / 2);
+        cam.translate(gameData.getDisplayWidth(), gameData.getDisplayHeight());
         cam.update();
 
         sr = new ShapeRenderer();
