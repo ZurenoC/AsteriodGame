@@ -1,5 +1,5 @@
 # AsteriodGame
-
+This is a SDU Semester Portfolio for Component Based Systems
 # To make the game run:
 
 EDIT configurations
