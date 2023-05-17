@@ -78,6 +78,7 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
 
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
+
     }
 
 }

@@ -41,6 +41,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             lifePart.process(gameData, player);
 
             updateShape(player);
+            updateFlame(player);
 
         }
     }
@@ -48,6 +49,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
     private void updateShape(Entity entity) {
         float[] shapex = new float[4];
         float[] shapey = new float[4];
+
         PositionPart positionPart = entity.getPart(PositionPart.class);
         float x = positionPart.getX();
         float y = positionPart.getY();
@@ -57,7 +59,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
         shapey[0] = (float) (y + Math.sin(radians) * entity.getRadius());
 
         shapex[1] = (float) (x + Math.cos(radians - 4 * 3.1415f / 5) * entity.getRadius());
-        shapey[1] = (float) (y + Math.sin(radians - 4 * 3.1145f / 5) * entity.getRadius());
+        shapey[1] = (float) (y + Math.sin(radians - 4 * 3.1415f / 5) * entity.getRadius());
 
         shapex[2] = (float) (x + Math.cos(radians + 3.1415f) * entity.getRadius() * 0.5);
         shapey[2] = (float) (y + Math.sin(radians + 3.1415f) * entity.getRadius() * 0.5);
@@ -67,6 +69,30 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
+    }
+
+    private void updateFlame(Entity entity) {
+
+        float[] flamex = new float[3];
+        float[] flamey = new float[3];
+
+        PositionPart positionPart = entity.getPart(PositionPart.class);
+        float x = positionPart.getX();
+        float y = positionPart.getY();
+        float radians = positionPart.getRadians();
+
+        flamex[0] = (float) (x + Math.cos(radians - 4 * 3.1415f / 5) * entity.getRadius());
+        flamey[0] = (float) (y + Math.sin(radians - 4 * 3.1415f / 5) * entity.getRadius());
+
+        flamex[1] = (float) (x + Math.cos(radians + 3.1415f) * entity.getRadius() * 1.5);
+        flamey[1] = (float) (y + Math.sin(radians + 3.1415f) * entity.getRadius() * 1.5);
+
+        flamex[2] = (float) (x + Math.cos(radians + 4 * 3.1415f / 5) * entity.getRadius());
+        flamey[2] = (float) (y + Math.sin(radians + 4 * 3.1415f / 5) * entity.getRadius());
+
+
+        entity.setFlameX(flamex);
+        entity.setFlameY(flamey);
     }
 
     private Collection<? extends BulletSPI> getBulletSPIs() {

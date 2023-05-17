@@ -12,6 +12,10 @@ public class Entity implements Serializable {
 
     private float[] shapeX = new float[4];
     private float[] shapeY = new float[4];
+
+
+    private float[] flameX = new float[3];
+    private float[] flameY = new float[3];
     private float radius;
     private Map<Class, EntityPart> parts;
 
@@ -38,7 +42,19 @@ public class Entity implements Serializable {
     public float getRadius() {
         return radius;
     }
+    public float[] getFlameX() {
+        return flameX;
+    }
+    public void setFlameX(float[] flameX) {
+        this.flameX = flameX;
+    }
+    public float[] getFlameY() {
+        return flameY;
+    }
 
+    public void setFlameY(float[] flameY) {
+        this.flameY = flameY;
+    }
     public String getID() {
         return ID.toString();
     }

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
@@ -87,11 +88,21 @@ public class Game
             float[] shapex = entity.getShapeX();
             float[] shapey = entity.getShapeY();
 
+            float[] flamex = entity.getFlameX();
+            float[] flamey = entity.getFlameY();
+
             for (int i = 0, j = shapex.length - 1;
                     i < shapex.length;
                     j = i++) {
 
                 sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
+            }
+
+            for (int i = 0, j = flamex.length - 1;
+                     i < flamex.length;
+                     j = i++) {
+
+                sr.line(flamex[i], flamey[i], flamex[j], flamey[j]);
             }
 
             sr.end();
