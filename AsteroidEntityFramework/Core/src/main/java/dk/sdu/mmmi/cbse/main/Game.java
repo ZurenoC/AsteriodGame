@@ -46,7 +46,6 @@ public class Game
                 new GameInputProcessor(gameData)
         );
 
-        // Lookup all Game Plugins using ServiceLoader
         for (IGamePluginService iGamePlugin : getPluginServices()) {
             iGamePlugin.start(gameData, world);
         }
@@ -55,7 +54,6 @@ public class Game
     @Override
     public void render() {
 
-        // clear screen to black
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -69,7 +67,6 @@ public class Game
     }
 
     private void update() {
-        // Update
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }

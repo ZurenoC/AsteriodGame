@@ -10,10 +10,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
-/**
- *
- * @author corfixen
- */
+
 public class AsteroidSplitterImpl implements IAsteroidSplitter {
 
     @Override
