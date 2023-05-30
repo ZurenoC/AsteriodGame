@@ -194,14 +194,5 @@ class CollisionDetectorTest {
 
         verify(lifepart, never()).setIsHit(anyBoolean());
     }
-/*
-    @Test
-    void collides() {
-        assertTrue(collisionDetector.collides(0, 0, 6, 10, 0, 6));
-        assertTrue(collisionDetector.collides(0, 0, 5.000001f, 10, 0, 5.000001f));
-        assertTrue(collisionDetector.collides(0, 0, 10, 10, 10, 10));
-        assertFalse(collisionDetector.collides(0, 0, 5, 10, 0, 5));
-        assertFalse(collisionDetector.collides(0, 0, 5, 10, 10, 5));
-    }
-*/
+
 }
