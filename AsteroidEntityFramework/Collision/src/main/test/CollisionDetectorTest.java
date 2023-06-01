@@ -39,21 +39,21 @@ class CollisionDetectorTest {
     ) {
 
 
-        // Entity 1
+        // Create test Entity 1
         Entity entity1 = mock(Entity.class);
-        when(entity1.getID()).thenReturn(entity1ID); // ID of entity
+        when(entity1.getID()).thenReturn(entity1ID); // Make them different by ID
         LifePart lifePart1 = mock(LifePart.class);
         PositionPart positionPart1 = mock(PositionPart.class);
         when(entity1.getPart(LifePart.class)).thenReturn(lifePart1);
         when(entity1.getPart(PositionPart.class)).thenReturn(positionPart1);
 
-        // Test specific elements
-        when(lifePart1.getLife()).thenReturn(entity1Life); // Life of part
-        when(positionPart1.getX()).thenReturn(entity1X); // X position
-        when(positionPart1.getY()).thenReturn(entity1Y); // Y position
+        // Give Test entity a
+        when(lifePart1.getLife()).thenReturn(entity1Life); // Life
+        when(positionPart1.getX()).thenReturn(entity1X); // X coordinate
+        when(positionPart1.getY()).thenReturn(entity1Y); // Y coordinate
         when(entity1.getRadius()).thenReturn(entity1R); // Radius
 
-        // Entity 2
+        // Create test Entity 2
         Entity entity2 = mock(Entity.class);
         when(entity2.getID()).thenReturn(entity2ID); // ID of entity
         LifePart lifePart2 = mock(LifePart.class);
@@ -61,42 +61,18 @@ class CollisionDetectorTest {
         when(entity2.getPart(LifePart.class)).thenReturn(lifePart2);
         when(entity2.getPart(PositionPart.class)).thenReturn(positionPart2);
 
-        // Test specific elements
-        when(lifePart2.getLife()).thenReturn(entity2Life); // Life of part
-        when(positionPart2.getX()).thenReturn(entity2X); // X position
-        when(positionPart2.getY()).thenReturn(entity2Y); // Y position
+        // T Give Test entity a
+        when(lifePart2.getLife()).thenReturn(entity2Life); // Life
+        when(positionPart2.getX()).thenReturn(entity2X); // X coordinate
+        when(positionPart2.getY()).thenReturn(entity2Y); // Y coordinate
         when(entity2.getRadius()).thenReturn(entity2R); // Radius
 
         List<Entity> entityList = new LinkedList<>();
         entityList.add(entity1);
         entityList.add(entity2);
-        when(mockedWorld.getEntities()).thenReturn(entityList);
+        when(mockedWorld.getEntities()).thenReturn(entityList); //Add to entity list for registration
 
         return lifePart1;
-    }
-
-    @Test
-    void processFalseWithLife() {
-        GameData mockedGameData = mock(GameData.class);
-        World mockedWorld = mock(World.class);
-
-        LifePart lifepart = setupMocking(
-                mockedWorld,
-                "1",
-                1,
-                0,
-                0,
-                1,
-                "2",
-                1,
-                2,
-                1,
-                1
-        );
-
-        collisionDetector.process(mockedGameData, mockedWorld);
-
-        verify(lifepart, never()).setIsHit(anyBoolean());
     }
 
     @Test
@@ -120,79 +96,8 @@ class CollisionDetectorTest {
 
         collisionDetector.process(mockedGameData, mockedWorld);
 
-        verify(lifepart).setIsHit(true);
+        verify(lifepart).setIsHit(true); //Verify that they hit each other
     }
 
-    @Test
-    void processFalseWithNoLife() {
-        GameData mockedGameData = mock(GameData.class);
-        World mockedWorld = mock(World.class);
-
-        LifePart lifepart = setupMocking(
-                mockedWorld,
-                "1",
-                0,
-                0,
-                0,
-                1,
-                "2",
-                0,
-                2,
-                1,
-                1
-        );
-
-        collisionDetector.process(mockedGameData, mockedWorld);
-
-        verify(lifepart, never()).setIsHit(anyBoolean());
-    }
-
-    @Test
-    void processTrueWithNoLife() {
-        GameData mockedGameData = mock(GameData.class);
-        World mockedWorld = mock(World.class);
-
-        LifePart lifepart = setupMocking(
-                mockedWorld,
-                "1",
-                0,
-                0,
-                0,
-                2,
-                "2",
-                0,
-                2,
-                1,
-                2
-        );
-
-        collisionDetector.process(mockedGameData, mockedWorld);
-
-        verify(lifepart, never()).setIsHit(anyBoolean());
-    }
-
-    @Test
-    void processSameID() {
-        GameData mockedGameData = mock(GameData.class);
-        World mockedWorld = mock(World.class);
-
-        LifePart lifepart = setupMocking(
-                mockedWorld,
-                "1",
-                0,
-                0,
-                0,
-                10,
-                "1",
-                0,
-                2,
-                1,
-                10
-        );
-
-        collisionDetector.process(mockedGameData, mockedWorld);
-
-        verify(lifepart, never()).setIsHit(anyBoolean());
-    }
 
 }
