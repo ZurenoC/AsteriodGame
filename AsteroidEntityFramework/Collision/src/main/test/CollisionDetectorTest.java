@@ -76,7 +76,7 @@ class CollisionDetectorTest {
     }
 
     @Test
-    void processTrueWithLife() {
+    void collisionDetected(){
         GameData mockedGameData = mock(GameData.class);
         World mockedWorld = mock(World.class);
 

@@ -21,7 +21,7 @@ class PlayerPluginTest {
 
     @Test
     @Order(1)
-    void start() {
+    void addPlayer() {
         playerPlugin.start(mockedGameData, mockedWorld);
 
         verify(mockedWorld).addEntity(any(Player.class));
@@ -29,7 +29,7 @@ class PlayerPluginTest {
 
     @Test
     @Order(2)
-    void stop() {
+    void removePlayer() {
         playerPlugin.stop(mockedGameData, mockedWorld);
 
         verify(mockedWorld).removeEntity(any(Player.class));
